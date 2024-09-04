@@ -1,0 +1,77 @@
+site_name: 数字集成电路实验讲义
+site_url: https://github.com/15947470421/digital_IC_experiment
+
+repo_name: 数字集成电路实验讲义 
+repo_url: https://github.com/15947470421/digital_IC_experiment
+
+theme:
+  name: material
+  language: zh
+  highlightjs: true
+  palette: 
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: blue
+      toggle:
+        icon: material/weather-night
+        name: 暗色模式
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: purple
+      toggle:
+        icon: material/weather-sunny
+        name: 亮色模式
+  features:
+    - navigation.top
+    # https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/?h=nav#navigation-tabs
+    # - navigation.tabs
+    # - navigation.tabs.sticky
+    # https://squidfunk.github.io/mkdocs-material/setup/setting-up-the-footer/?h=footer
+  custom_dir: overrides
+  font:
+    text: Noto Serif SC # Roboto
+    code: Roboto Mono
+  
+
+ 
+# 版权
+copyright: This website follows CC BY-SA 4.0
+
+# 插件
+plugins:
+  - search
+  - awesome-pages:
+      strict: false
+
+
+# LaTeX支持
+markdown_extensions:
+  - pymdownx.arithmatex:
+      generic: true
+  - admonition
+  - pymdownx.details
+  - pymdownx.tilde
+  - pymdownx.superfences
+  - pymdownx.critic
+  - pymdownx.caret
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.highlight:
+      use_pygments: true
+  - footnotes
+  - def_list
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tabbed:
+      alternate_style: true
+  - attr_list
+  - md_in_html
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+extra_css:
+  - stylesheets/status.css
+
