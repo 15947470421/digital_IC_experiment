@@ -1,0 +1,1725 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://github.com/15947470421/digital_IC_experiment/%E5%AE%9E%E9%AA%8C12_%E7%A1%AC%E4%BB%B6%E6%8F%8F%E8%BF%B0%E8%AF%AD%E8%A8%80%E2%80%94%E2%80%94Verilog/%E5%AE%9E%E9%AA%8C12_%E7%A1%AC%E4%BB%B6%E6%8F%8F%E8%BF%B0%E8%AF%AD%E8%A8%80%E2%80%94%E2%80%94Verilog/">
+      
+      
+        <link rel="prev" href="../../%E5%AE%9E%E9%AA%8C11_%E8%BF%90%E7%AE%97%E5%8A%9F%E8%83%BD%E6%A8%A1%E5%9D%97%E8%AE%BE%E8%AE%A1/%E5%AE%9E%E9%AA%8C11_%E8%BF%90%E7%AE%97%E5%8A%9F%E8%83%BD%E6%A8%A1%E5%9D%97%E8%AE%BE%E8%AE%A1/">
+      
+      
+        <link rel="next" href="../../%E5%AE%9E%E9%AA%8C1_%E6%99%B6%E4%BD%93%E7%AE%A1%E5%99%A8%E4%BB%B6%E5%9F%BA%E7%A1%801%E2%80%94%E2%80%94%E9%9D%99%E6%80%81%E7%89%B9%E6%80%A7/%E5%AE%9E%E9%AA%8C1_%E6%99%B6%E4%BD%93%E7%AE%A1%E5%99%A8%E4%BB%B6%E5%9F%BA%E7%A1%801%E2%80%94%E2%80%94%E9%9D%99%E6%80%81%E7%89%B9%E6%80%A7/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.50">
+    
+    
+      
+        <title>实验12 硬件描述语言——Verilog - 数字集成电路实验讲义</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.a40c8224.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif+SC:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Serif SC";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/status.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#12-verilog" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="数字集成电路实验讲义" class="md-header__button md-logo" aria-label="数字集成电路实验讲义" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            数字集成电路实验讲义
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              实验12 硬件描述语言——Verilog
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="indigo"  aria-label="暗色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="暗色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="purple" data-md-color-accent="indigo"  aria-label="亮色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="亮色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/15947470421/digital_IC_experiment" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    数字集成电路实验讲义
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="数字集成电路实验讲义" class="md-nav__button md-logo" aria-label="数字集成电路实验讲义" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    数字集成电路实验讲义
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/15947470421/digital_IC_experiment" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    数字集成电路实验讲义
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    数字集成电路实验讲义
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    实验0 LTspice工具的安装和使用
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            实验0 LTspice工具的安装和使用
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%AE%9E%E9%AA%8C0_LTspice%E5%B7%A5%E5%85%B7%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8/%E5%AE%9E%E9%AA%8C0_LTspice%E5%B7%A5%E5%85%B7%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    实验0 LTspice工具的安装和使用
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    实验10 CMOS时序逻辑电路设计
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            实验10 CMOS时序逻辑电路设计
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%AE%9E%E9%AA%8C10_CMOS%E6%97%B6%E5%BA%8F%E9%80%BB%E8%BE%91%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1/%E5%AE%9E%E9%AA%8C10_CMOS%E6%97%B6%E5%BA%8F%E9%80%BB%E8%BE%91%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    实验7时序逻辑电路设计
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    实验11 运算功能模块设计
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            实验11 运算功能模块设计
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%AE%9E%E9%AA%8C11_%E8%BF%90%E7%AE%97%E5%8A%9F%E8%83%BD%E6%A8%A1%E5%9D%97%E8%AE%BE%E8%AE%A1/%E5%AE%9E%E9%AA%8C11_%E8%BF%90%E7%AE%97%E5%8A%9F%E8%83%BD%E6%A8%A1%E5%9D%97%E8%AE%BE%E8%AE%A1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    实验11 运算功能模块设计
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    实验12 硬件描述语言——Verilog
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            实验12 硬件描述语言——Verilog
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    实验12 硬件描述语言——Verilog
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    实验12 硬件描述语言——Verilog
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#verilog" class="md-nav__link">
+    <span class="md-ellipsis">
+      配置轻量化Verilog开发环境
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="配置轻量化Verilog开发环境">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#iverilog" class="md-nav__link">
+    <span class="md-ellipsis">
+      安装iverilog
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vscodeverilog-hdl" class="md-nav__link">
+    <span class="md-ellipsis">
+      安装VScode插件Verilog HDL
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vscodedigital-ide" class="md-nav__link">
+    <span class="md-ellipsis">
+      安装VScodeDigital IDE
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      编程初体验
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="编程初体验">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#testbench" class="md-nav__link">
+    <span class="md-ellipsis">
+      编写代码和testbench
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#windowsiverilog" class="md-nav__link">
+    <span class="md-ellipsis">
+      Windows系统下iverilog运行报错
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      查看仿真波形
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#yosys" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用yosys进行综合
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    实验1 晶体管器件基础1——静态特性
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            实验1 晶体管器件基础1——静态特性
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%AE%9E%E9%AA%8C1_%E6%99%B6%E4%BD%93%E7%AE%A1%E5%99%A8%E4%BB%B6%E5%9F%BA%E7%A1%801%E2%80%94%E2%80%94%E9%9D%99%E6%80%81%E7%89%B9%E6%80%A7/%E5%AE%9E%E9%AA%8C1_%E6%99%B6%E4%BD%93%E7%AE%A1%E5%99%A8%E4%BB%B6%E5%9F%BA%E7%A1%801%E2%80%94%E2%80%94%E9%9D%99%E6%80%81%E7%89%B9%E6%80%A7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    晶体管器件基础1——静态特性
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    实验2 （重要）晶体管器件基础2——MOSFET的宽长比
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            实验2 （重要）晶体管器件基础2——MOSFET的宽长比
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%AE%9E%E9%AA%8C2_%EF%BC%88%E9%87%8D%E8%A6%81%EF%BC%89%E6%99%B6%E4%BD%93%E7%AE%A1%E5%99%A8%E4%BB%B6%E5%9F%BA%E7%A1%802%E2%80%94%E2%80%94MOSFET%E7%9A%84%E5%AE%BD%E9%95%BF%E6%AF%94/%E5%AE%9E%E9%AA%8C2_%EF%BC%88%E9%87%8D%E8%A6%81%EF%BC%89%E6%99%B6%E4%BD%93%E7%AE%A1%E5%99%A8%E4%BB%B6%E5%9F%BA%E7%A1%802%E2%80%94%E2%80%94MOSFET%E7%9A%84%E5%AE%BD%E9%95%BF%E6%AF%94/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    实验2_（重要）晶体管器件基础2——MOSFET的宽长比
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    实验3 晶体管器件基础3——动态特性
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            实验3 晶体管器件基础3——动态特性
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%AE%9E%E9%AA%8C3_%E6%99%B6%E4%BD%93%E7%AE%A1%E5%99%A8%E4%BB%B6%E5%9F%BA%E7%A1%803%E2%80%94%E2%80%94%E5%8A%A8%E6%80%81%E7%89%B9%E6%80%A7/%E5%AE%9E%E9%AA%8C3_%E6%99%B6%E4%BD%93%E7%AE%A1%E5%99%A8%E4%BB%B6%E5%9F%BA%E7%A1%803%E2%80%94%E2%80%94%E5%8A%A8%E6%80%81%E7%89%B9%E6%80%A7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    实验3_晶体管器件基础3——动态特性
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    实验4 晶体管器件基础4——工艺角与PVT
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            实验4 晶体管器件基础4——工艺角与PVT
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%AE%9E%E9%AA%8C4_%E6%99%B6%E4%BD%93%E7%AE%A1%E5%99%A8%E4%BB%B6%E5%9F%BA%E7%A1%804%E2%80%94%E2%80%94%E5%B7%A5%E8%89%BA%E8%A7%92%E4%B8%8EPVT/%E6%99%B6%E4%BD%93%E7%AE%A1%E5%99%A8%E4%BB%B6%E5%9F%BA%E7%A1%804%E2%80%94%E2%80%94%E5%B7%A5%E8%89%BA%E8%A7%92%E4%B8%8EPVT/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    晶体管器件基础4——工艺角与PVT
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    实验5 CMOS反相器（非门）
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            实验5 CMOS反相器（非门）
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%AE%9E%E9%AA%8C5_CMOS%E5%8F%8D%E7%9B%B8%E5%99%A8%EF%BC%88%E9%9D%9E%E9%97%A8%EF%BC%89/%E5%AE%9E%E9%AA%8C5_CMOS%E5%8F%8D%E7%9B%B8%E5%99%A8%EF%BC%88%E9%9D%9E%E9%97%A8%EF%BC%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    实验5 CMOS反相器（非门）
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    实验6 负载的概念
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            实验6 负载的概念
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%AE%9E%E9%AA%8C6_%E8%B4%9F%E8%BD%BD%E7%9A%84%E6%A6%82%E5%BF%B5/%E5%AE%9E%E9%AA%8C6_%E8%B4%9F%E8%BD%BD%E7%9A%84%E6%A6%82%E5%BF%B5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    实验6 负载的概念
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12" >
+        
+          
+          <label class="md-nav__link" for="__nav_12" id="__nav_12_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    实验7 反相器链
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_12">
+            <span class="md-nav__icon md-icon"></span>
+            实验7 反相器链
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%AE%9E%E9%AA%8C7_%E5%8F%8D%E7%9B%B8%E5%99%A8%E9%93%BE/%E5%AE%9E%E9%AA%8C7_%EF%BC%88CS%E4%B8%93%E4%B8%9A%E9%80%89%E5%AD%A6%EF%BC%89%E5%8F%8D%E7%9B%B8%E5%99%A8%E9%93%BE/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    实验7（CS专业选学）反相器链
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13" >
+        
+          
+          <label class="md-nav__link" for="__nav_13" id="__nav_13_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    实验8 （CS专业选学）功耗、能量和延时
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_13">
+            <span class="md-nav__icon md-icon"></span>
+            实验8 （CS专业选学）功耗、能量和延时
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%AE%9E%E9%AA%8C8_%EF%BC%88CS%E4%B8%93%E4%B8%9A%E9%80%89%E5%AD%A6%EF%BC%89%E5%8A%9F%E8%80%97%E3%80%81%E8%83%BD%E9%87%8F%E5%92%8C%E5%BB%B6%E6%97%B6/%E5%AE%9E%E9%AA%8C8_%EF%BC%88CS%E4%B8%93%E4%B8%9A%E9%80%89%E5%AD%A6%EF%BC%89%E5%8A%9F%E8%80%97%E3%80%81%E8%83%BD%E9%87%8F%E5%92%8C%E5%BB%B6%E6%97%B6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    实验8（CS专业选学）功耗、能量和延时
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_14" >
+        
+          
+          <label class="md-nav__link" for="__nav_14" id="__nav_14_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    实验9 CMOS组合逻辑电路设计
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_14">
+            <span class="md-nav__icon md-icon"></span>
+            实验9 CMOS组合逻辑电路设计
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%AE%9E%E9%AA%8C9_CMOS%E7%BB%84%E5%90%88%E9%80%BB%E8%BE%91%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1/%E5%AE%9E%E9%AA%8C9_CMOS%E7%BB%84%E5%90%88%E9%80%BB%E8%BE%91%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    实验6 CMOS组合逻辑门的设计
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_15" >
+        
+          
+          <label class="md-nav__link" for="__nav_15" id="__nav_15_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    毕业设计 8bit ALU
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_15_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_15">
+            <span class="md-nav__icon md-icon"></span>
+            毕业设计 8bit ALU
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1_8bit_ALU/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1_8bit_ALU/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    "毕业"设计_8bit_ALU
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#verilog" class="md-nav__link">
+    <span class="md-ellipsis">
+      配置轻量化Verilog开发环境
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="配置轻量化Verilog开发环境">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#iverilog" class="md-nav__link">
+    <span class="md-ellipsis">
+      安装iverilog
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vscodeverilog-hdl" class="md-nav__link">
+    <span class="md-ellipsis">
+      安装VScode插件Verilog HDL
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vscodedigital-ide" class="md-nav__link">
+    <span class="md-ellipsis">
+      安装VScodeDigital IDE
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      编程初体验
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="编程初体验">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#testbench" class="md-nav__link">
+    <span class="md-ellipsis">
+      编写代码和testbench
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#windowsiverilog" class="md-nav__link">
+    <span class="md-ellipsis">
+      Windows系统下iverilog运行报错
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      查看仿真波形
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#yosys" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用yosys进行综合
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="12-verilog">实验12 硬件描述语言——Verilog</h1>
+<blockquote>
+<p>“凿井者，起于三寸之坎，以就万仞之深。”</p>
+<p>——《刘子·崇学》，刘昼</p>
+</blockquote>
+<p>通过前面的实验，相信同学们已经体会到如果我们的电路规模很大，我们花费了大量的时间和精力在重复的摆放器件和连接导线。对于一些大规模的工程，显然我们不可能再手动画原理图（比如手动摆放100个与非门）。</p>
+<p>而HDL语言就是为了大规模集成电路而产生的。HDL语言并不属于教程的内容，这里默认大家已经掌握的HDL语言（本教程使用Verilog语言），主要讲解环境的搭建。</p>
+<h2 id="verilog">配置轻量化Verilog开发环境</h2>
+<h3 id="iverilog">安装iverilog</h3>
+<p><code>iverilog</code>是一个开源的免费编译Verilog代码的工具。用于编译我们编写的Verilog代码。</p>
+<p>点击<a href="https://bleyer.org/icarus/">iverilog的官网</a>下载，选择其中的<code>iverilog-v11-20210204-x64_setup.exe [44.1MB]</code>链接进行下载。
+<strong>请务必安装v11版本，后续的插件不支持v12版本！</strong></p>
+<p>下载完成后，正常解压和安装。<strong>记得在安装的过程中将iverilog添加到系统变量中。</strong></p>
+<h3 id="vscodeverilog-hdl">安装VScode插件<code>Verilog HDL</code></h3>
+<p><code>Verilog HDL</code>是在VScode中一键运行Verilog代码的插件。</p>
+<details class="info" open="open">
+<summary>Verilog HDL插件</summary>
+<p><img alt="" src="../%E5%9B%BE%E7%89%87/Verilog_HDL%E6%8F%92%E4%BB%B6.jpg" /></p>
+</details>
+<p>在VScode的拓展中搜索并安装即可使用。</p>
+<p>安装完成后，会在打开Verilog文档的时候，VScode界面的右上角有一个绿色的按钮，这个按钮可以调用iverilog并编译和运行当前的Verilog代码。</p>
+<details class="info" open="open">
+<summary>Verilog HDL右上角按钮</summary>
+<p><img alt="" src="../%E5%9B%BE%E7%89%87/Verilog_HDL%E6%8C%89%E9%92%AE.jpg" /></p>
+</details>
+<h3 id="vscodedigital-ide">安装VScode<code>Digital IDE</code></h3>
+<p><code>Digital IDE</code>（以下简称DIDE）是一款开源的免费的数字开发集成开发环境，可以让我们的Verilog编程体验大幅提升。它由NC-AI团队开发。<a href="https://github.com/Digital-EDA/Digital-IDE">该项目的github主页</a>，同学们如果觉得好用，也欢迎大家为该项目star。</p>
+<details class="info" open="open">
+<summary>Digital IDE插件</summary>
+<p><img alt="" src="../%E5%9B%BE%E7%89%87/Digital%20IDE%E6%8F%92%E4%BB%B6.jpg" /></p>
+</details>
+<p>我个人比较喜欢和常用的功能包括：
+1. 电路综合：内部集成了yosys，使用yosys综合电路，并且内置了Netlist查看器。
+2. vcd波形查看器：DIDE团队自行开发了一款非常“炫酷”的vcd波形查看器，效果非常好！
+3. 模块文档化：可以自动生成模块的描述文档。</p>
+<p>DIDE的快速上手教程可以参考<a href="http://nc-ai.cn/">DIDE的官网</a>。</p>
+<h2 id="_1">编程初体验</h2>
+<p>搭建好环境后，我们便可以开始愉快的编程之旅了。我们这里仅使用一段最基础的加法器作为实例演示。</p>
+<h3 id="testbench">编写代码和testbench</h3>
+<p>首先，我们在工程文件夹下新建一个.v文件（.v是Verilog文件的后缀名）命名为adder_8bit.v，并编写Verilog代码。这里直接给出加法器代码：
+<div class="highlight"><pre><span></span><code>module adder_8bit(
+    input [7:0] a,
+    input [7:0] b,
+    output [7:0] sum,
+    output carry_out
+);
+    assign {carry_out, sum} = a + b;
+endmodule
+</code></pre></div></p>
+<p>然后我们在同一个文件夹下再新建一个Verilog文件，并命名为adder_8bit_tb.v，该文件是加法器的testbench文件，对应的testbench代码如下：
+<div class="highlight"><pre><span></span><code>`include &quot;adder_8bit.v&quot; // 包含源文件
+`timescale 1ns / 1ps
+
+module adder_8bit_tb;
+    reg [7:0] a;
+    reg [7:0] b;
+    wire [7:0] sum;
+    wire carry_out;
+
+    // 实例化待测试的8位加法器模块
+    adder_8bit uut(
+        .a(a),
+        .b(b),
+        .sum(sum),
+        .carry_out(carry_out)
+    );
+
+    initial begin
+        // 初始化输入
+        a = 8&#39;b0;
+        b = 8&#39;b0;
+
+        // 测试用例1: 0 + 0
+        #10;
+        a = 8&#39;b0;
+        b = 8&#39;b0;
+
+        // 测试用例2: 1 + 2
+        #10;
+        a = 8&#39;b00000001;
+        b = 8&#39;b00000010;
+
+        // 测试用例3: 127 + 128
+        #10;
+        a = 8&#39;b01111111;
+        b = 8&#39;b10000000;
+
+        // 测试用例4: 255 + 255
+        #10;
+        a = 8&#39;b11111111;
+        b = 8&#39;b11111111;
+
+        // 测试完成，结束仿真
+        #10;
+        $finish;
+    end
+
+    initial begin
+        $display(&quot;start a clock pulse&quot;);    // 打印开始标记
+        $dumpfile(&quot;wave.vcd&quot;);              // 指定记录模拟波形的文件
+        $dumpvars(0, adder_8bit_tb);        // 指定记录的模块层级
+        #100 $finish;                       // 100个单位时间后结束模拟
+    end
+endmodule
+</code></pre></div></p>
+<p>这里需要说明一下以下6行代码的作用，以及如何在其他工程中调用：
+<div class="highlight"><pre><span></span><code>initial begin
+    $display(&quot;start a clock pulse&quot;);    // 打印开始标记
+    $dumpfile(&quot;wave.vcd&quot;);              // 指定记录模拟波形的文件
+    $dumpvars(0, adder_8bit_tb);        // 指定记录的模块层级
+    #100 $finish;                       // 100个单位时间后结束模拟
+end
+</code></pre></div>
+这6行代码的作用就是指定输出的波形文件以及指定需要仿真的模块。每次在其他工程中调用的时候，需要将<code>$dumpvars(0, adder_8bit_tb);</code>中的<code>adder_8bit_tb</code>更改为对应的testbench模块，并且将<code>#100 $finish;</code>结束时间根据具体工程进行调整。</p>
+<p>然后我们点击右上角的Verilog HDL的绿色按钮，即可一键进行仿真了。如果不出意外的话，就会看到文件夹中多出了2个文件：
+1. <code>adder_8bit_tb.v.out</code>：这个文件是输出的记录文件。
+2. <code>wave.vcd</code>：这个文件是生成的波形文件，也就是我们需要查看的结果。</p>
+<details class="info" open="open">
+<summary>最终的文件夹目录</summary>
+<p><img alt="" src="../%E5%9B%BE%E7%89%87/%E6%96%87%E4%BB%B6%E5%A4%B9%E7%9B%AE%E5%BD%95.jpg" /></p>
+</details>
+<h3 id="windowsiverilog">Windows系统下iverilog运行报错</h3>
+<p>如果同学使用的是Windows系统，那么此时会报错，输出一段乱码（请不要将这段乱码复制在文档中，“它”会像病毒一样，导致整个文档的编码都变成乱码，别问我怎么知道的...）：</p>
+<details class="info" open="open">
+<summary>输出乱码</summary>
+<p><img alt="" src="./图片/" /></p>
+</details>
+<p>请按照如下步骤修改设置：
+1. 打开电脑<code>设置</code>
+2. 打开<code>时间和语言</code>选项</p>
+<details class="info" open="open">
+<summary>日期与时间</summary>
+<p><img alt="" src="../%E5%9B%BE%E7%89%87/%E6%97%A5%E6%9C%9F%E4%B8%8E%E6%97%B6%E9%97%B4.jpg" /></p>
+</details>
+<ol>
+<li>选择<code>语言</code></li>
+<li>在右边部分的相关设置中<code>管理语言设置</code></li>
+<li>在非Unicode程序的语言框，点击<code>更改系统区域设置</code></li>
+<li>在弹出的对话框中的最下方，点击<code>Beta版：使用Unicode UTF-8 提供全球语言支持(U)</code>打勾，然后重新启动电脑。</li>
+</ol>
+<details class="info" open="open">
+<summary>勾选Beta版本</summary>
+<p><img alt="" src="../%E5%9B%BE%E7%89%87/Beta%E7%89%88%E6%9C%AC.jpg" /></p>
+</details>
+<p>重启后，应该就不会报错了。</p>
+<h3 id="_2">查看仿真波形</h3>
+<p>DIDE可以直接打开.vcd波形文件，打开后可以查看输出的波形（DIDE的操作请查看DIDE的操作说明）。</p>
+<details class="info" open="open">
+<summary>波形输出文件</summary>
+<p><img alt="" src="../%E5%9B%BE%E7%89%87/%E6%B3%A2%E5%BD%A2%E8%BE%93%E5%87%BA%E6%96%87%E4%BB%B6.jpg" /></p>
+</details>
+<p>这里可以看到，8bits加法器的输出完全正确。</p>
+<h3 id="yosys">使用yosys进行综合</h3>
+<p>DIDE还集成了yosys这一开源电路综合工具，帮助我们生成综合之后的网表文件Netlist。点击右上角的Netlist图标，DIDE就会自动调用yosys综合电路。最终综合之后的电路如下：</p>
+<details class="info" open="open">
+<summary>查看综合后的Netlist</summary>
+<p><img alt="" src="../%E5%9B%BE%E7%89%87/%E7%BB%BC%E5%90%88%E5%90%8E%E6%9F%A5%E7%9C%8BNetlist.jpg" /></p>
+</details>
+
+
+
+
+
+
+
+
+
+
+
+<div id="__comments">
+
+
+
+<h3>颜色主题调整</h3>
+
+<div class="tx-switch">
+<button data-md-color-scheme="default"><code>default</code></button>
+<button data-md-color-scheme="slate"><code>slate</code></button>
+</div>
+
+<script>
+var buttons = document.querySelectorAll("button[data-md-color-scheme]")
+buttons.forEach(function(button) {
+        button.addEventListener("click", function() {
+        var attr = this.getAttribute("data-md-color-scheme")
+        document.body.setAttribute("data-md-color-scheme", attr)
+        localStorage.setItem("data-md-color-scheme",attr);
+        updateScheme();
+        })
+})
+</script>
+
+<div class="tx-switch">
+<button class="button1" data-md-color-primary="red" style="background-color:red">red</button>
+<button class="button1" data-md-color-primary="pink" style="background-color:pink;color:black">pink</button>
+<button class="button1" data-md-color-primary="purple" style="background-color:purple">purple</button>
+<button class="button1" data-md-color-primary="indigo" style="background-color:indigo">indigo</button>
+<button class="button1" data-md-color-primary="blue" style="background-color:blue">blue</button>
+<button class="button1" data-md-color-primary="cyan" style="background-color:cyan;color:black">cyan</button>
+<button class="button1" data-md-color-primary="teal" style="background-color:teal">teal</button>
+<button class="button1" data-md-color-primary="green" style="background-color:green">green</button>
+<button class="button1" data-md-color-primary="lime" style="background-color:lime;color:black">lime</button>
+<button class="button1" data-md-color-primary="orange" style="background-color:orange;color:black">orange</button>
+<button class="button1" data-md-color-primary="brown" style="background-color:brown;border-radius:3px">brown</button>
+<button class="button1" data-md-color-primary="grey" style="background-color:grey">grey</button>
+<button class="button1" data-md-color-primary="black" style="background-color:black">black</button>
+<button class="button1" data-md-color-primary="white" style="background-color:white;color:black">white</button>
+</div>
+
+<script>
+var buttons = document.querySelectorAll("button[data-md-color-primary]")
+buttons.forEach(function(button) {
+        button.addEventListener("click", function() {
+        var attr = this.getAttribute("data-md-color-primary")
+        document.body.setAttribute("data-md-color-primary", attr)
+        localStorage.setItem("data-md-color-primary",attr);
+        })
+})
+</script>
+
+<h2 ><!-- 评论 -->评论区~</h2>
+
+
+</div>
+
+<script src="https://giscus.app/client.js"
+        data-repo="trace1729/NCU-CS-BaoYan"
+        data-repo-id="R_kgDOJ_FoOw"
+        data-category="Q&A"
+        data-category-id="DIC_kwDOJ_FoO84CYMDD"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="preferred_color_scheme"
+        data-lang="zh-CN"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      This website follows CC BY-SA 4.0
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.top"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.60a45f97.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
